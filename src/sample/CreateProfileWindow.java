@@ -17,15 +17,16 @@ import javafx.stage.Stage;
 /**
  * Created by Phil on 11/13/2016.
  */
-public class LoginWindow extends Stage {
+public class CreateProfileWindow extends Stage {
 
-    static LoginWindow window;
+    static CreateProfileWindow window;
     VBox messagePane;
     Scene messageScene;
     Label messageLabel;
     Label usernameLabel;
     Label passwordLabel;
-    Button loginButton;
+    Label confirmPasswordLabel;
+    Button createButton;
     Button cancelButton;
     String username;
     String selection;
@@ -40,15 +41,16 @@ public class LoginWindow extends Stage {
 
     TextField loginField;
     PasswordField passwordField;
+    PasswordField confirmPasswordField;
 
-    private LoginWindow() {}
+    private CreateProfileWindow() {}
 
     public void setMessageLabel(String messageLabelText){
         messageLabel.setText(messageLabelText);
     }
 
-    public static LoginWindow getLogin() {
-        if (window==null) window = new LoginWindow();
+    public static CreateProfileWindow getWindow() {
+        if (window==null) window = new CreateProfileWindow();
         return window;
     }
 
@@ -57,19 +59,18 @@ public class LoginWindow extends Stage {
         initOwner(primaryStage);
 
         messageLabel = new Label();
-        loginButton = new Button("Login");
+        createButton = new Button("Create");
         cancelButton = new Button("Cancel");
 
-        EventHandler<ActionEvent> loginHandler = event -> {
-            LoginWindow.this.selection = ((Button) event.getSource()).getText();
-            LoginWindow.this.hide();
+        EventHandler<ActionEvent> hideHandler = event -> {
+            CreateProfileWindow.this.hide();
         };
 
-        loginButton.setOnAction(loginHandler);
-        cancelButton.setOnAction(loginHandler);
+        createButton.setOnAction(hideHandler);
+        cancelButton.setOnAction(hideHandler);
 
         HBox buttonBox = new HBox();
-        buttonBox.getChildren().add(loginButton);
+        buttonBox.getChildren().add(createButton);
         buttonBox.getChildren().add(cancelButton);
 
         messagePane = new VBox();
@@ -77,16 +78,22 @@ public class LoginWindow extends Stage {
         messagePane.getChildren().add(messageLabel);
         HBox usernameBox = new HBox();
 
-        usernameLabel = new Label("Username: ");
+        usernameLabel = new Label("Username:               ");
         loginField = new TextField();
         usernameBox.getChildren().addAll(usernameLabel,loginField);
         messagePane.getChildren().add(usernameBox);
 
         HBox passBox = new HBox();
         passwordField = new PasswordField();
-        passwordLabel = new Label("Password: ");
+        passwordLabel = new Label("Password:               ");
         passBox.getChildren().addAll(passwordLabel,passwordField);
         messagePane.getChildren().add(passBox);
+
+        HBox confirmBox = new HBox();
+        confirmPasswordField = new PasswordField();
+        confirmPasswordLabel = new Label("Confirm Password: ");
+        confirmBox.getChildren().addAll(confirmPasswordLabel,confirmPasswordField);
+        messagePane.getChildren().add(confirmBox);
 
         messagePane.getChildren().add(buttonBox);
 

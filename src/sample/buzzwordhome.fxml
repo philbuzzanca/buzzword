@@ -3,6 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -24,8 +26,16 @@
    <left>
       <VBox spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" text="Create New Profile" />
-            <Button mnemonicParsing="false" onAction="#loginButtonClicked" prefHeight="25.0" prefWidth="115.0" text="Login" />
+            <Button fx:id="cnpButton" mnemonicParsing="false" onAction="#cnpButtonClicked" text="Create New Profile" />
+            <Button fx:id="loginButton" mnemonicParsing="false" onAction="#loginButtonClicked" prefHeight="25.0" prefWidth="115.0" text="Login" />
+            <MenuButton fx:id="selectModeMenu" disable="true" mnemonicParsing="false" prefHeight="25.0" prefWidth="115.0" text="Select Mode">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Dictionary Words" />
+                  <MenuItem mnemonicParsing="false" text="Celebrities" />
+                  <MenuItem mnemonicParsing="false" text="Animals" />
+               </items>
+            </MenuButton>
+            <Button fx:id="startButton" disable="true" mnemonicParsing="false" onAction="#startButtonPressed" prefHeight="25.0" prefWidth="116.0" text="Start" />
          </children>
          <BorderPane.margin>
             <Insets />
