@@ -30,9 +30,9 @@
             <Button fx:id="loginButton" mnemonicParsing="false" onAction="#loginButtonClicked" prefHeight="25.0" prefWidth="115.0" text="Login" />
             <MenuButton fx:id="selectModeMenu" disable="true" mnemonicParsing="false" prefHeight="25.0" prefWidth="115.0" text="Select Mode">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Dictionary Words" />
-                  <MenuItem mnemonicParsing="false" text="Celebrities" />
-                  <MenuItem mnemonicParsing="false" text="Animals" />
+                  <MenuItem mnemonicParsing="false" onAction="#updateGameMode1" text="Dictionary Words" />
+                  <MenuItem mnemonicParsing="false" onAction="#updateGameMode2" text="Celebrities" />
+                  <MenuItem mnemonicParsing="false" onAction="#updateGameMode3" text="Animals" />
                </items>
             </MenuButton>
             <Button fx:id="startButton" disable="true" mnemonicParsing="false" onAction="#startButtonPressed" prefHeight="25.0" prefWidth="116.0" text="Start" />

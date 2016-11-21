@@ -1,7 +1,7 @@
 package sample;
 
 /**
- * Created by Phil on 11/14/2016.
+ * Created by Philip Buzzanca on 11/14/2016.
  */
 public class GameData {
     public String getUsername() {

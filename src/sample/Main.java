@@ -7,7 +7,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-
+/**
+ * Created by Philip Buzzanca on 11/14/2016.
+ */
 public class Main extends Application {
     static GameData gamedata;
 

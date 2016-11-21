@@ -3,8 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -27,13 +25,7 @@
       <VBox spacing="10.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="usernameButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="114.0" text="username" />
-            <MenuButton mnemonicParsing="false" prefHeight="25.0" prefWidth="114.0" text="Select Mode">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Dictionary Words" />
-                <MenuItem mnemonicParsing="false" text="Celebrities" />
-                  <MenuItem mnemonicParsing="false" text="Animals" />
-              </items>
-            </MenuButton>
+            <Button fx:id="homeButton" mnemonicParsing="false" onAction="#homeButtonPressed" prefHeight="25.0" prefWidth="114.0" text="Home" />
          </children>
          <BorderPane.margin>
             <Insets />
@@ -76,7 +68,7 @@
                <children>
                   <StackPane prefHeight="150.0" prefWidth="200.0">
                      <children>
-                        <Circle fill="#909090" radius="41.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                        <Circle fx:id="circleOne" fill="#909090" onMouseClicked="#circleOnePressed" radius="41.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
                         <Label text="1" textFill="WHITE">
                            <font>
                               <Font size="48.0" />
@@ -96,7 +88,7 @@
                   </StackPane>
                   <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1">
                      <children>
-                        <Circle fill="#909090" radius="41.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                        <Circle fx:id="circleTwo" fill="#909090" onMouseClicked="#circleTwoPressed" radius="41.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
                         <Label text="2" textFill="WHITE">
                            <font>
                               <Font size="48.0" />
@@ -116,7 +108,7 @@
                   </StackPane>
                   <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2">
                      <children>
-                        <Circle fill="#909090" radius="41.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                        <Circle fx:id="circleThree" fill="#909090" onMouseClicked="#circleThreePressed" radius="41.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
                         <Label text="3" textFill="WHITE">
                            <font>
                               <Font size="48.0" />
@@ -136,7 +128,7 @@
                   </StackPane>
                   <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="3">
                      <children>
-                        <Circle fill="#909090" radius="41.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                        <Circle fx:id="circleFour" fill="#909090" onMouseClicked="#circleFourPressed" radius="41.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
                         <Label text="4" textFill="WHITE">
                            <font>
                               <Font size="48.0" />

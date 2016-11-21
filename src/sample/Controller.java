@@ -2,7 +2,6 @@ package sample;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -11,9 +10,11 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+/**
+ * Created by Philip Buzzanca on 11/14/2016.
+ */
 
 public class Controller {
-    static GameData gamedata;
     @FXML
             private Button loginButton;
     @FXML
@@ -26,6 +27,7 @@ public class Controller {
             private MenuButton selectModeMenu;
 
     static Main game = new Main();
+    String gamemode = new String("Dictionary Words");
 
 
     public void loginButtonClicked() throws IOException {
@@ -63,8 +65,17 @@ public class Controller {
         Stage stage = (Stage) loginButton.getScene().getWindow();
         stage.setScene(new Scene((Pane)loader.load()));
         LevelSelectController cont = loader.<LevelSelectController>getController();
-        cont.updateUserButton(game.getGamedata().getUsername());
+        cont.updateLevelData(game.getGamedata().getUsername(),this.gamemode);
         stage.show();
+    }
 
+    public void updateGameMode1(){
+        this.gamemode="Dictionary Words";
+    }
+    public void updateGameMode2(){
+        this.gamemode="Celebrities";
+    }
+    public void updateGameMode3(){
+        this.gamemode="Animals";
     }
 }

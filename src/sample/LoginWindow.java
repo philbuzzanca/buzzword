@@ -15,7 +15,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
- * Created by Phil on 11/13/2016.
+ * Created by Philip Buzzanca on 11/14/2016.
  */
 public class LoginWindow extends Stage {
 
