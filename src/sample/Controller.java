@@ -15,14 +15,34 @@ import java.io.IOException;
  */
 
 public class Controller {
+    public Button getLoginButton() {
+        return loginButton;
+    }
+
+
     @FXML
             private Button loginButton;
+
+    public Button getCnpButton() {
+        return cnpButton;
+    }
+
     @FXML
             private Button cnpButton;
     @FXML
             private Label modeTitle;
+
+    public Button getStartButton() {
+        return startButton;
+    }
+
     @FXML
             private Button startButton;
+
+    public MenuButton getSelectModeMenu() {
+        return selectModeMenu;
+    }
+
     @FXML
             private MenuButton selectModeMenu;
 
@@ -65,7 +85,7 @@ public class Controller {
         Stage stage = (Stage) loginButton.getScene().getWindow();
         stage.setScene(new Scene((Pane)loader.load()));
         LevelSelectController cont = loader.<LevelSelectController>getController();
-        cont.updateLevelData(game.getGamedata().getUsername(),this.gamemode);
+        cont.updateLevelData(game.getUserData().getUsername(),this.gamemode);
         stage.show();
     }
 

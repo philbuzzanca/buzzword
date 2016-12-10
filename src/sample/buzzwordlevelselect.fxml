@@ -69,7 +69,7 @@
                   <StackPane prefHeight="150.0" prefWidth="200.0">
                      <children>
                         <Circle fx:id="circleOne" fill="#909090" onMouseClicked="#circleOnePressed" radius="41.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-                        <Label text="1" textFill="WHITE">
+                        <Label fx:id="label1" onMouseClicked="#circleOnePressed" text="1" textFill="WHITE">
                            <font>
                               <Font size="48.0" />
                            </font>
@@ -78,8 +78,8 @@
                   </StackPane>
                   <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="1">
                      <children>
-                        <Circle radius="41.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-                        <Label text="5" textFill="#686868">
+                        <Circle fx:id="circleFive" onMouseClicked="#circleFivePressed" radius="41.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                        <Label fx:id="label5" onMouseClicked="#circleFivePressed" text="5" textFill="#686868">
                            <font>
                               <Font size="48.0" />
                            </font>
@@ -88,8 +88,8 @@
                   </StackPane>
                   <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1">
                      <children>
-                        <Circle fx:id="circleTwo" fill="#909090" onMouseClicked="#circleTwoPressed" radius="41.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-                        <Label text="2" textFill="WHITE">
+                        <Circle fx:id="circleTwo" onMouseClicked="#circleTwoPressed" radius="41.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                        <Label fx:id="label2" onMouseClicked="#circleTwoPressed" text="2" textFill="#686868">
                            <font>
                               <Font size="48.0" />
                            </font>
@@ -98,8 +98,8 @@
                   </StackPane>
                   <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <children>
-                        <Circle radius="41.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-                        <Label text="6" textFill="#686868">
+                        <Circle fx:id="circleSix" onMouseClicked="#circleSixPressed" radius="41.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                        <Label fx:id="label6" onMouseClicked="#circleSixPressed" text="6" textFill="#686868">
                            <font>
                               <Font size="48.0" />
                            </font>
@@ -108,8 +108,8 @@
                   </StackPane>
                   <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2">
                      <children>
-                        <Circle fx:id="circleThree" fill="#909090" onMouseClicked="#circleThreePressed" radius="41.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-                        <Label text="3" textFill="WHITE">
+                        <Circle fx:id="circleThree" onMouseClicked="#circleThreePressed" radius="41.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                        <Label fx:id="label3" onMouseClicked="#circleThreePressed" text="3" textFill="#686868">
                            <font>
                               <Font size="48.0" />
                            </font>
@@ -118,8 +118,8 @@
                   </StackPane>
                   <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <children>
-                        <Circle radius="41.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-                        <Label text="7" textFill="#686868">
+                        <Circle fx:id="circleSeven" onMouseClicked="#circleSevenPressed" radius="41.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                        <Label fx:id="label7" onMouseClicked="#circleSevenPressed" text="7" textFill="#686868">
                            <font>
                               <Font size="48.0" />
                            </font>
@@ -128,8 +128,8 @@
                   </StackPane>
                   <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="3">
                      <children>
-                        <Circle fx:id="circleFour" fill="#909090" onMouseClicked="#circleFourPressed" radius="41.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-                        <Label text="4" textFill="WHITE">
+                        <Circle fx:id="circleFour" onMouseClicked="#circleFourPressed" radius="41.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                        <Label fx:id="label4" onMouseClicked="#circleFourPressed" text="4" textFill="#686868">
                            <font>
                               <Font size="48.0" />
                            </font>
@@ -138,8 +138,8 @@
                   </StackPane>
                   <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
                      <children>
-                        <Circle radius="41.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-                        <Label text="8" textFill="#686868">
+                        <Circle fx:id="circleEight" onMouseClicked="#circleEightPressed" radius="41.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                        <Label fx:id="label8" onMouseClicked="#circleEightPressed" text="8" textFill="#686868">
                            <font>
                               <Font size="48.0" />
                            </font>
