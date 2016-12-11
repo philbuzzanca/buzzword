@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.GameplayController">
+   <top>
+      <Label text="Buzzword" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Label>
+   </top>
+   <left>
+      <VBox prefHeight="456.0" prefWidth="182.0" spacing="10.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="usernameButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="114.0" text="username" />
+            <Button fx:id="homeButton" mnemonicParsing="false" onAction="#homeButtonPressed" prefHeight="25.0" prefWidth="114.0" text="Home" />
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <padding>
+            <Insets left="12.0" />
+         </padding>
+      </VBox>
+   </left>
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="90.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="playPauseButton" alignment="CENTER" mnemonicParsing="false" onAction="#playPauseButtonPressed" prefHeight="52.0" prefWidth="101.0" text="PAUSE" />
+         </children></HBox>
+   </bottom>
+   <center>
+      <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label fx:id="modeTitle" alignment="CENTER" prefHeight="49.0" prefWidth="575.0" text="Dictionary Words" underline="true">
+                     <font>
+                        <Font size="33.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="levelNumber" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="575.0" text="Level x">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <GridPane onMouseDragReleased="#handleNodeRelease" prefHeight="441.0" prefWidth="501.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <StackPane prefHeight="150.0" prefWidth="200.0">
+                           <children>
+                              <Circle fx:id="button00" fill="#909090" onDragDetected="#nodeDragged" onMouseDragEntered="#nodeEntered" onMouseDragReleased="#handleNodeRelease" radius="32.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                              <Label fx:id="label00" disable="true" opacity="0.99" text="H" textFill="WHITE">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="NONE" />
+                                 </cursor>
+                              </Label>
+                           </children>
+                        </StackPane>
+                        <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="1">
+                           <children>
+                              <Circle fx:id="button10" fill="#909090" onDragDetected="#nodeDragged" onMouseDragEntered="#nodeEntered" onMouseDragReleased="#handleNodeRelease" radius="32.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                              <Label fx:id="label10" disable="true" opacity="0.99" text="R" textFill="WHITE">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </StackPane>
+                        <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="2">
+                           <children>
+                              <Circle fx:id="button20" fill="#909090" onDragDetected="#nodeDragged" onMouseDragEntered="#nodeEntered" onMouseDragReleased="#handleNodeRelease" radius="32.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                              <Label fx:id="label20" disable="true" opacity="0.99" text="T" textFill="WHITE">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </StackPane>
+                        <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="3">
+                           <children>
+                              <Circle fx:id="button30" fill="#909090" onDragDetected="#nodeDragged" onMouseDragEntered="#nodeEntered" onMouseDragReleased="#handleNodeRelease" radius="32.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                              <Label fx:id="label30" disable="true" opacity="0.99" text="H" textFill="WHITE">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </StackPane>
+                        <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1">
+                           <children>
+                              <Circle fx:id="button01" fill="#909090" onDragDetected="#nodeDragged" onMouseDragEntered="#nodeEntered" onMouseDragReleased="#handleNodeRelease" radius="32.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                              <Label fx:id="label01" disable="true" opacity="0.99" text="E" textFill="WHITE">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </StackPane>
+                        <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <children>
+                              <Circle fx:id="button11" fill="#909090" onDragDetected="#nodeDragged" onMouseDragEntered="#nodeEntered" onMouseDragReleased="#handleNodeRelease" radius="32.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                              <Label fx:id="label11" disable="true" opacity="0.99" text="A" textFill="WHITE">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </StackPane>
+                        <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <children>
+                              <Circle fx:id="button21" fill="#909090" onDragDetected="#nodeDragged" onMouseDragEntered="#nodeEntered" onMouseDragReleased="#handleNodeRelease" radius="32.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                              <Label fx:id="label21" disable="true" opacity="0.99" text="H" textFill="WHITE">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </StackPane>
+                        <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <children>
+                              <Circle fx:id="button31" fill="#909090" onDragDetected="#nodeDragged" onMouseDragEntered="#nodeEntered" onMouseDragReleased="#handleNodeRelease" radius="32.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                              <Label fx:id="label31" disable="true" opacity="0.99" text="H" textFill="WHITE">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </StackPane>
+                        <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2">
+                           <children>
+                              <Circle fx:id="button02" fill="#909090" onDragDetected="#nodeDragged" onMouseDragEntered="#nodeEntered" onMouseDragReleased="#handleNodeRelease" radius="32.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                              <Label fx:id="label02" disable="true" opacity="0.99" text="H" textFill="WHITE">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </StackPane>
+                        <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                           <children>
+                              <Circle fx:id="button12" fill="#909090" onDragDetected="#nodeDragged" onMouseDragEntered="#nodeEntered" onMouseDragReleased="#handleNodeRelease" radius="32.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                              <Label fx:id="label12" disable="true" opacity="0.99" text="H" textFill="WHITE">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </StackPane>
+                        <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                           <children>
+                              <Circle fx:id="button22" fill="#909090" onDragDetected="#nodeDragged" onMouseDragEntered="#nodeEntered" onMouseDragReleased="#handleNodeRelease" radius="32.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                              <Label fx:id="label22" disable="true" opacity="0.99" text="W" textFill="WHITE">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </StackPane>
+                        <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                           <children>
+                              <Circle fx:id="button32" fill="#909090" onDragDetected="#nodeDragged" onMouseDragEntered="#nodeEntered" onMouseDragReleased="#handleNodeRelease" radius="32.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                              <Label fx:id="label32" disable="true" opacity="0.99" text="R" textFill="WHITE">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </StackPane>
+                        <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="3">
+                           <children>
+                              <Circle fx:id="button03" fill="#909090" onDragDetected="#nodeDragged" onMouseDragEntered="#nodeEntered" onMouseDragReleased="#handleNodeRelease" radius="32.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                              <Label fx:id="label03" disable="true" opacity="0.99" text="H" textFill="WHITE">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </StackPane>
+                        <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                           <children>
+                              <Circle fx:id="button13" fill="#909090" onDragDetected="#nodeDragged" onMouseDragEntered="#nodeEntered" onMouseDragReleased="#handleNodeRelease" radius="32.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                              <Label fx:id="label13" disable="true" opacity="0.99" text="C" textFill="WHITE">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </StackPane>
+                        <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                           <children>
+                              <Circle fx:id="button23" fill="#909090" onDragDetected="#nodeDragged" onMouseDragEntered="#nodeEntered" onMouseDragReleased="#handleNodeRelease" radius="32.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                              <Label fx:id="label23" disable="true" opacity="0.99" text="O" textFill="WHITE">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </StackPane>
+                        <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                           <children>
+                              <Circle fx:id="button33" fill="#909090" onDragDetected="#nodeDragged" onMouseDragEntered="#nodeEntered" onMouseDragReleased="#handleNodeRelease" radius="32.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                              <Label fx:id="label33" disable="true" opacity="0.99" text="D" textFill="WHITE">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </StackPane>
+                     </children>
+                  </GridPane>
+               </children>
+            </VBox>
+         </children>
+      </StackPane>
+   </center>
+   <right>
+      <StackPane prefHeight="573.0" prefWidth="201.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="532.0" prefWidth="201.0">
+               <children>
+                  <Label fx:id="timerLabel" prefHeight="17.0" prefWidth="192.0" text="Time Remaining: 60 seconds" textFill="RED" underline="true">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <ListView fx:id="guessedWords" prefHeight="523.0" prefWidth="201.0" />
+                  <Label fx:id="scoreLabel" prefHeight="82.0" prefWidth="202.0" text="Score: 100 Points" textFill="#0d00ff">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Label>
+                  <Label />
+                  <Label fx:id="targetLabel" prefHeight="82.0" prefWidth="202.0" text="Goal: 100 Points" textFill="#0d00ff">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </StackPane>
+   </right>
+</BorderPane>
