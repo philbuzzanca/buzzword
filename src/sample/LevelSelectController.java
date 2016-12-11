@@ -313,6 +313,7 @@ public class LevelSelectController {
         for(int i = 0; i < 4; i++){
             for (int j = 0; j < 4; j++){
                 randomGrid[i][j] = (char)((int)'A'+Math.random()*((int)'Z'-(int)'A'+1));
+                /*
                 if ((!(randomGrid[i][j] == 'A' || randomGrid[i][j] == 'E' || randomGrid[i][j] == 'I' || randomGrid[i][j] == 'O' || randomGrid[i][j] == 'U')) && reroll(33)==true){
                     randomGrid[i][j] = generateRandomVowel(); // 33% chance to reroll non-vowels to guaranteed vowels
 
@@ -320,11 +321,12 @@ public class LevelSelectController {
                 if ((randomGrid[i][j] == 'Z' || randomGrid[i][j] == 'Q' || randomGrid[i][j] == 'X' || randomGrid[i][j] == 'J' || randomGrid[i][j] == 'K' || randomGrid[i][j] == 'V') && reroll(200)==true){
                     randomGrid[i][j] = (char)((int)'A'+Math.random()*((int)'Z'-(int)'A'+1)); // 75% chance to reroll on uncommon characters
                 }
+                */
             }
         }
-        randomGrid[0][0] = 'C';
-        randomGrid[0][1] = 'A';
-        randomGrid[0][2] = 'T';
+        if(BoggleSolver.solve(randomGrid, this.dictionary).size() < 10){
+            generateRandomGrid();
+        }
     }
 
     private char generateRandomVowel(){

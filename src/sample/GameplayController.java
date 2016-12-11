@@ -142,23 +142,7 @@ public class GameplayController {
         if (playPauseButton.getText().equals("PAUSE")) {
             timeline.pause();
             playPauseButton.setText("PLAY");
-            label00.setVisible(false);
-            label01.setVisible(false);
-            label02.setVisible(false);
-            label03.setVisible(false);
-            label10.setVisible(false);
-            label11.setVisible(false);
-            label12.setVisible(false);
-            label13.setVisible(false);
-            label20.setVisible(false);
-            label21.setVisible(false);
-            label22.setVisible(false);
-            label23.setVisible(false);
-            label30.setVisible(false);
-            label31.setVisible(false);
-            label32.setVisible(false);
-            label33.setVisible(false);
-
+            setAllLettersVisible(false);
             button00.setFill(Paint.valueOf("#909090"));
             button01.setFill(Paint.valueOf("#909090"));
             button02.setFill(Paint.valueOf("#909090"));
@@ -178,23 +162,7 @@ public class GameplayController {
             buttonTracker.clear();
         }
         else if (playPauseButton.getText().equals("START")) {
-
-            label00.setVisible(true);
-            label01.setVisible(true);
-            label02.setVisible(true);
-            label03.setVisible(true);
-            label10.setVisible(true);
-            label11.setVisible(true);
-            label12.setVisible(true);
-            label13.setVisible(true);
-            label20.setVisible(true);
-            label21.setVisible(true);
-            label22.setVisible(true);
-            label23.setVisible(true);
-            label30.setVisible(true);
-            label31.setVisible(true);
-            label32.setVisible(true);
-            label33.setVisible(true);
+            setAllLettersVisible(true);
             playPauseButton.setText("PAUSE");
             timeline = new Timeline();
             timeline.setCycleCount(Timeline.INDEFINITE);
@@ -231,22 +199,7 @@ public class GameplayController {
         }
         else {
             playPauseButton.setText("PAUSE");
-            label00.setVisible(true);
-            label01.setVisible(true);
-            label02.setVisible(true);
-            label03.setVisible(true);
-            label10.setVisible(true);
-            label11.setVisible(true);
-            label12.setVisible(true);
-            label13.setVisible(true);
-            label20.setVisible(true);
-            label21.setVisible(true);
-            label22.setVisible(true);
-            label23.setVisible(true);
-            label30.setVisible(true);
-            label31.setVisible(true);
-            label32.setVisible(true);
-            label33.setVisible(true);
+            setAllLettersVisible(true);
             if(timeRemaining>0) timeline.play();
         }
     }
@@ -419,22 +372,7 @@ public class GameplayController {
         label33.setText(Character.toString(randomGrid[3][3]));
         playPauseButton.setText("START");
         scoreLabel.setText("Score: 0 Points");
-        label00.setVisible(false);
-        label01.setVisible(false);
-        label02.setVisible(false);
-        label03.setVisible(false);
-        label10.setVisible(false);
-        label11.setVisible(false);
-        label12.setVisible(false);
-        label13.setVisible(false);
-        label20.setVisible(false);
-        label21.setVisible(false);
-        label22.setVisible(false);
-        label23.setVisible(false);
-        label30.setVisible(false);
-        label31.setVisible(false);
-        label32.setVisible(false);
-        label33.setVisible(false);
+        setAllLettersVisible(false);
 
         wordTracker = FXCollections.observableArrayList();
         button00.setAccessibleText(Character.toString(randomGrid[0][0]));
@@ -453,7 +391,26 @@ public class GameplayController {
         button31.setAccessibleText(Character.toString(randomGrid[3][1]));
         button32.setAccessibleText(Character.toString(randomGrid[3][2]));
         button33.setAccessibleText(Character.toString(randomGrid[3][3]));
-        System.out.println("Dictionary: "+this.dictionary.toString());
+        System.out.println(BoggleSolver.solve(randomGrid, dictionary));
 
+    }
+
+    private void setAllLettersVisible(boolean b){
+        label00.setVisible(b);
+        label01.setVisible(b);
+        label02.setVisible(b);
+        label03.setVisible(b);
+        label10.setVisible(b);
+        label11.setVisible(b);
+        label12.setVisible(b);
+        label13.setVisible(b);
+        label20.setVisible(b);
+        label21.setVisible(b);
+        label22.setVisible(b);
+        label23.setVisible(b);
+        label30.setVisible(b);
+        label31.setVisible(b);
+        label32.setVisible(b);
+        label33.setVisible(b);
     }
 }
