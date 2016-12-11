@@ -21,6 +21,8 @@ public class Main extends Application {
         createProfileWindow.init(primaryStage);
         AppMessageDialogSingleton appMessageDialogSingleton = AppMessageDialogSingleton.getSingleton();
         appMessageDialogSingleton.init(primaryStage);
+        YesNoCancelDialogSingleton yesNoCancelDialogSingleton = YesNoCancelDialogSingleton.getSingleton();
+        yesNoCancelDialogSingleton.init(primaryStage);
 
         Parent root = FXMLLoader.load(getClass().getResource("buzzwordhome.fxml"));
         primaryStage.setTitle("Buzzword");

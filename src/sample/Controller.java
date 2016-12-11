@@ -21,7 +21,7 @@ public class Controller {
     public Button getLoginButton() {
         return loginButton;
     }
-
+    private static boolean loggedIn = false;
 
     @FXML
             private Button loginButton;
@@ -64,21 +64,35 @@ public class Controller {
 
 
     public void loginButtonClicked() throws IOException {
-        LoginWindow.getLogin().getLoginField().clear();
-        LoginWindow.getLogin().getPasswordField().clear();
-        try {
-            game.showLoginScreen(LoginWindow.getLogin());
-        } catch (IOException e) {
-            e.printStackTrace();
+        if(loggedIn == false) {
+            LoginWindow.getLogin().getLoginField().clear();
+            LoginWindow.getLogin().getPasswordField().clear();
+            try {
+                game.showLoginScreen(LoginWindow.getLogin());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            LoginWindow loginWindow = LoginWindow.getLogin();
+            if (loginWindow.getSelection().equals("Login")) {
+                loginButton.setMinWidth(cnpButton.getWidth());
+                loginButton.setMaxWidth(cnpButton.getWidth());
+                loginButton.setText(loginWindow.getLoginField().getText());
+                cnpButton.setVisible(false);
+                selectModeMenu.setDisable(false);
+                startButton.setDisable(false);
+                this.loggedIn = true;
+            }
         }
-        LoginWindow loginWindow = LoginWindow.getLogin();
-        if (loginWindow.getSelection().equals("Login")){
-            loginButton.setMinWidth(cnpButton.getWidth());
-            loginButton.setMaxWidth(cnpButton.getWidth());
-            loginButton.setText(loginWindow.getLoginField().getText());
-            cnpButton.setVisible(false);
-            selectModeMenu.setDisable(false);
-            startButton.setDisable(false);
+        else {
+            YesNoCancelDialogSingleton s = YesNoCancelDialogSingleton.getSingleton();
+            s.show("Log out", "Are you sure you want to log out?");
+            if(s.getSelection().equals("Yes")){
+                cnpButton.setVisible(true);
+                startButton.setDisable(true);
+                this.loggedIn = false;
+                selectModeMenu.setDisable(true);
+                this.loginButton.setText("Login");
+            }
         }
     }
 

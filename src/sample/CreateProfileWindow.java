@@ -75,6 +75,11 @@ public class CreateProfileWindow extends Stage {
 
     TextField loginField;
     PasswordField passwordField;
+
+    public PasswordField getConfirmPasswordField() {
+        return confirmPasswordField;
+    }
+
     PasswordField confirmPasswordField;
 
     private CreateProfileWindow() {}
