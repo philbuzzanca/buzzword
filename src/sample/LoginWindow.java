@@ -131,9 +131,9 @@ public class LoginWindow extends Stage {
                                     jsonParser.nextToken();
                                     Main.userData.setDictionaryWords(jsonParser.getIntValue());
                                     break;
-                                case "Animals":
+                                case "Cities":
                                     jsonParser.nextToken();
-                                    Main.userData.setAnimals(jsonParser.getIntValue());
+                                    Main.userData.setCities(jsonParser.getIntValue());
                                     break;
                                 case "Common Names":
                                     jsonParser.nextToken();

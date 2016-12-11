@@ -5,7 +5,7 @@ package sample;
  */
 public class UserData {
     private String username;
-    private int animals;
+    private int cities;
     private int commonNames;
     private int dictionaryWords;
 
@@ -19,8 +19,8 @@ public class UserData {
         return username;
     }
 
-    public int getAnimals() {
-        return animals;
+    public int getCities() {
+        return cities;
     }
 
     public int getCommonNames() {
@@ -35,15 +35,15 @@ public class UserData {
 
     public UserData(String username){
         this.username = username;
-        animals = 1;
+        cities = 1;
         commonNames = 1;
         dictionaryWords = 1;
     }
 
-    public void setAnimals(int i){
-        if (i<=1) animals = 1;
-        else if (i>=8) animals = 8;
-        else animals = i;
+    public void setCities(int i){
+        if (i<=1) cities = 1;
+        else if (i>=8) cities = 8;
+        else cities = i;
     }
 
     public void setCommonNames(int i){

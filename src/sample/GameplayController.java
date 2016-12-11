@@ -125,10 +125,14 @@ public class GameplayController {
         private ListView guessedWords;
     @FXML
         private Label scoreLabel;
+    @FXML
+        private Button restartButton;
+    @FXML
+        private Button nextButton;
 
     private int score = 0;
 
-    private static final Integer startTime = 90;
+    private static final Integer startTime = 180;
     private Set<String> dictionary;
     private Integer timeRemaining = startTime;
     private Timeline timeline;
@@ -136,6 +140,7 @@ public class GameplayController {
     private int level;
     List<String> wordTracker;
     List<Circle> buttonTracker;
+    private Set<String> allPossibleWords;
 
 
     public void playPauseButtonPressed(){
@@ -175,6 +180,7 @@ public class GameplayController {
                                     timeline.stop();
                                     AppMessageDialogSingleton gameOver = AppMessageDialogSingleton.getSingleton();
                                     if (score >= targetScore){
+
                                         Platform.runLater(() -> {
                                             gameOver.show("Game over", "You win");
                                         });
@@ -189,7 +195,11 @@ public class GameplayController {
                                             gameOver.show("Game over", "You lose");
                                         });
                                     }
-                                }
+                                    for(String word : allPossibleWords){
+                                        if (!wordTracker.contains(word) && word.length()>2){
+                                            guessedWords.getItems().add("Missed " + word + " - " + wordScore(word.length()));
+                                        }
+                                    }}
                             }
                     )
             );
@@ -204,13 +214,39 @@ public class GameplayController {
         }
     }
 
+    @FXML
+    public void handleRestart() {
+        timeline.stop();
+        updateData(Main.userData.getUsername(), this.modeTitle.getText(), this.level, generateRandomGrid(), this.dictionary);
+    }
+
+    @FXML
+    public void handleNext() {
+        updateData(Main.userData.getUsername(), this.modeTitle.getText(), this.level+1, generateRandomGrid(), this.dictionary);
+    }
+
+
+    private char[][] generateRandomGrid(){
+        char[][] randomGrid = new char[4][4];
+        for(int i = 0; i < 4; i++){
+            for (int j = 0; j < 4; j++){
+                randomGrid[i][j] = (char)((int)'A'+Math.random()*((int)'Z'-(int)'A'+1));
+            }
+        }
+        if(BoggleSolver.getMaxScore(BoggleSolver.solve(randomGrid, this.dictionary)) < 30){
+           return generateRandomGrid();
+        }
+        return randomGrid;
+    }
+
     private void updateLevelProgress() throws IOException {
+        if(this.level < 8) nextButton.setDisable(false);
         switch(modeTitle.getText()){
             case "Dictionary Words":
                 if(this.level == Main.userData.getDictionaryWords()) Main.userData.setDictionaryWords(Main.userData.getDictionaryWords()+1);
                 break;
-            case "Animals":
-                if(this.level == Main.userData.getAnimals()) Main.userData.setAnimals(Main.userData.getAnimals()+1);
+            case "Cities":
+                if(this.level == Main.userData.getCities()) Main.userData.setCities(Main.userData.getCities()+1);
                 break;
             case "Common Names":
                 if(this.level == Main.userData.getCommonNames()) Main.userData.setCommonNames(Main.userData.getCommonNames()+1);
@@ -227,7 +263,7 @@ public class GameplayController {
             generator.writeStringField("Username", Main.userData.getUsername());
             generator.writeStringField("Encrypted password", Main.userData.getEncryptedPassword());
             generator.writeNumberField("Dictionary words",Main.userData.getDictionaryWords());
-            generator.writeNumberField("Animals",Main.userData.getAnimals());
+            generator.writeNumberField("Cities",Main.userData.getCities());
             generator.writeNumberField("Common Names",Main.userData.getCommonNames());
             generator.close();
         } catch (Exception e){
@@ -276,7 +312,7 @@ public class GameplayController {
             wordTracker.add(word.toString());
             score += wordScore(word.toString().length());
             scoreLabel.setText("Score: " + score + " Points");
-            guessedWords.getItems().add(word.toString()+"\t"+wordScore(word.length()));
+            if(word.length()>2) guessedWords.getItems().add(word.toString()+" - "+wordScore(word.length()));
         }
 
     }
@@ -333,6 +369,7 @@ public class GameplayController {
 
 
     public void homeButtonPressed() throws IOException {
+        timeline.stop();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("buzzwordhome.fxml"));
         Stage stage = (Stage) homeButton.getScene().getWindow();
         stage.setScene(new Scene((Pane)loader.load()));
@@ -344,14 +381,47 @@ public class GameplayController {
         stage.show();
     }
 
-    public void updateData(String name, String title, int level, String target, char[][] randomGrid, int targetScore, Set<String> dictionary) {
+    public void updateData(String name, String title, int level, char[][] randomGrid, Set<String> dictionary) {
+        allPossibleWords = BoggleSolver.solve(randomGrid, dictionary);
+        guessedWords.getItems().clear();
+        playPauseButton.setText("START");
+        nextButton.setDisable(true);
+        timeRemaining = startTime;
+        this.score = 0;
         this.dictionary = dictionary;
-        this.targetScore = targetScore;
         this.level = level;
+        int maxScore = BoggleSolver.getMaxScore(allPossibleWords);
+        switch(level){
+            case 1:
+                this.targetScore = (int)Math.floor(maxScore * (0.1));
+                break;
+            case 2:
+                this.targetScore = (int)Math.floor(maxScore * (0.2));
+                break;
+            case 3:
+                this.targetScore = (int)Math.floor(maxScore * (0.3));
+                break;
+            case 4:
+                this.targetScore = (int)Math.floor(maxScore * (0.4));
+                break;
+            case 5:
+                this.targetScore = (int)Math.floor(maxScore * (0.5));
+                break;
+            case 6:
+                this.targetScore = (int)Math.floor(maxScore * (0.6));
+                break;
+            case 7:
+                this.targetScore = (int)Math.floor(maxScore * (0.7));
+                break;
+            default:
+            case 8:
+                this.targetScore = (int)Math.floor(maxScore * (0.8));
+                break;
+        }
         usernameButton.setText(name);
         modeTitle.setText(title);
         levelNumber.setText("Level "+level);
-        targetLabel.setText(target);
+        targetLabel.setText("Target: " + this.targetScore + " points");
         timerLabel.setText("Time Remaining: "+startTime.toString()+" seconds");
         label00.setText(Character.toString(randomGrid[0][0]));
         button00.setAccessibleText(Character.toString(randomGrid[0][0]));
@@ -391,7 +461,6 @@ public class GameplayController {
         button31.setAccessibleText(Character.toString(randomGrid[3][1]));
         button32.setAccessibleText(Character.toString(randomGrid[3][2]));
         button33.setAccessibleText(Character.toString(randomGrid[3][3]));
-        System.out.println(BoggleSolver.solve(randomGrid, dictionary));
 
     }
 

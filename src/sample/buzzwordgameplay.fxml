@@ -38,9 +38,11 @@
       </VBox>
    </left>
    <bottom>
-      <HBox alignment="CENTER" prefHeight="90.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" prefHeight="90.0" prefWidth="800.0" spacing="11.0" BorderPane.alignment="CENTER">
          <children>
+            <Button fx:id="restartButton" alignment="CENTER" mnemonicParsing="false" onAction="#handleRestart" prefHeight="52.0" prefWidth="101.0" text="RESTART" />
             <Button fx:id="playPauseButton" alignment="CENTER" mnemonicParsing="false" onAction="#playPauseButtonPressed" prefHeight="52.0" prefWidth="101.0" text="PAUSE" />
+            <Button fx:id="nextButton" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#handleNext" prefHeight="52.0" prefWidth="101.0" text="NEXT LEVEL" />
          </children></HBox>
    </bottom>
    <center>

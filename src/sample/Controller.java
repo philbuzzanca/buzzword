@@ -57,9 +57,9 @@ public class Controller {
 
     static Main game = new Main();
     String gamemode = new String("Dictionary Words");
-    Set<String> boggleDictionary = BoggleSolver.loadHash("C:/Users/Phil/IdeaProjects/buzzwordfx/words/boggleDictionary.txt");
-    Set<String> namesDictionary = BoggleSolver.loadHash("C:/Users/Phil/IdeaProjects/buzzwordfx/words/firstNames.txt");
-    Set<String> animalsDictionary = BoggleSolver.loadHash("C:/Users/Phil/IdeaProjects/buzzwordfx/words/animals.txt");
+    Set<String> boggleDictionary = BoggleSolver.loadHash("words/boggleDictionary.txt");
+    Set<String> namesDictionary = BoggleSolver.loadHash("words/firstNames.txt");
+    Set<String> citiesDictionary = BoggleSolver.loadHash("words/cities.txt");
     Set<String> dictionary = boggleDictionary;
 
 
@@ -110,7 +110,7 @@ public class Controller {
         this.dictionary = namesDictionary;
     }
     public void updateGameMode3(){
-        this.gamemode="Animals";
-        this.dictionary = animalsDictionary;
+        this.gamemode="Cities";
+        this.dictionary = citiesDictionary;
     }
 }
