@@ -125,7 +125,7 @@ public class CreateProfileWindow extends Stage {
                     generator.writeStringField("Encrypted password", encrypt(passwordField.getText()));
                     generator.writeNumberField("Dictionary words",1);
                     generator.writeNumberField("Animals",1);
-                    generator.writeNumberField("Celebrities",1);
+                    generator.writeNumberField("Common Names",1);
                     generator.close();
                 } catch (Exception e){
                     e.printStackTrace();

@@ -9,20 +9,19 @@ import java.util.Set;
  * Created by Phil on 12/8/2016.
  */
 public class BoggleSolver {
-    static Set<String> boggleDictionary = new HashSet<>();
 
-    static Set<String> loadHash(){
+
+    static Set<String> loadHash(String filename){
+        Set<String> dictionary = new HashSet<>();
         try {
-            File file = new File("C:/Users/Phil/IdeaProjects/buzzwordfx/words/boggleDictionary.txt");
+            File file = new File(filename);
             Scanner input = new Scanner(file);
             while(input.hasNext()){
-                boggleDictionary.add(input.next().trim().toUpperCase());
+                dictionary.add(input.next().trim().toUpperCase());
             }
         } catch (Exception e){
             e.printStackTrace();
         }
-        return boggleDictionary;
+        return dictionary;
     }
-
-
 }

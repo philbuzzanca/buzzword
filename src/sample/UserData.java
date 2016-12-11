@@ -6,7 +6,7 @@ package sample;
 public class UserData {
     private String username;
     private int animals;
-    private int celebrities;
+    private int commonNames;
     private int dictionaryWords;
 
     public String getEncryptedPassword() {
@@ -23,8 +23,8 @@ public class UserData {
         return animals;
     }
 
-    public int getCelebrities() {
-        return celebrities;
+    public int getCommonNames() {
+        return commonNames;
     }
 
     public int getDictionaryWords() {
@@ -36,7 +36,7 @@ public class UserData {
     public UserData(String username){
         this.username = username;
         animals = 1;
-        celebrities = 1;
+        commonNames = 1;
         dictionaryWords = 1;
     }
 
@@ -46,10 +46,10 @@ public class UserData {
         else animals = i;
     }
 
-    public void setCelebrities(int i){
-        if (i<=1) celebrities = 1;
-        else if (i>=8) celebrities = 8;
-        else celebrities = i;
+    public void setCommonNames(int i){
+        if (i<=1) commonNames = 1;
+        else if (i>=8) commonNames = 8;
+        else commonNames = i;
     }
 
     public void setDictionaryWords(int i){

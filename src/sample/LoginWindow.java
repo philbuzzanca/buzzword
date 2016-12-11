@@ -135,9 +135,9 @@ public class LoginWindow extends Stage {
                                     jsonParser.nextToken();
                                     Main.userData.setAnimals(jsonParser.getIntValue());
                                     break;
-                                case "Celebrities":
+                                case "Common Names":
                                     jsonParser.nextToken();
-                                    Main.userData.setCelebrities(jsonParser.getIntValue());
+                                    Main.userData.setCommonNames(jsonParser.getIntValue());
                                     break;
                                 default:
                                     throw new JsonParseException(jsonParser, "Unable to load JSON data");

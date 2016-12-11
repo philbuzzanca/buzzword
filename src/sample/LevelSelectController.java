@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Random;
+import java.util.Set;
 
 import static sample.Main.userData;
 
@@ -60,9 +61,11 @@ public class LevelSelectController {
 
     private String title = "Dictionary Words";
     private char[][] randomGrid = new char[4][4];
+    private Set<String> dictionary;
 
 
-    void updateLevelData(String name, String title){
+    void updateLevelData(String name, String title, Set<String> dictionary){
+        this.dictionary = dictionary;
         this.title = title;
         usernameButton.setText(name);
         modeTitle.setText(title);
@@ -107,8 +110,8 @@ public class LevelSelectController {
                     }
                 }
                 break;
-            case "Celebrities":
-                for (int i = 1; i <= userData.getCelebrities(); i++) {
+            case "Common Names":
+                for (int i = 1; i <= userData.getCommonNames(); i++) {
                     switch (i) {
                         case 1:
                             break;
@@ -190,8 +193,8 @@ public class LevelSelectController {
         switch (title) {
             case "Animals":
                 return (userData.getAnimals());
-            case "Celebrities":
-                return (userData.getCelebrities());
+            case "Common Names":
+                return (userData.getCommonNames());
             default:
                 return userData.getDictionaryWords();
         }
@@ -217,7 +220,7 @@ public class LevelSelectController {
         stage.setScene(new Scene(loader.load()));
         GameplayController cont = loader.getController();
         generateRandomGrid();
-        cont.updateData(usernameButton.getText(), modeTitle.getText(), 1,"Target: 10 points", randomGrid, 10);
+        cont.updateData(usernameButton.getText(), modeTitle.getText(), 1,"Target: 10 points", randomGrid, 10, dictionary);
         stage.show();
     }
 
@@ -229,7 +232,7 @@ public class LevelSelectController {
             stage.setScene(new Scene(loader.load()));
             GameplayController cont = loader.getController();
             generateRandomGrid();
-            cont.updateData(usernameButton.getText(), modeTitle.getText(), 2, "Target: 15 points", randomGrid, 15);
+            cont.updateData(usernameButton.getText(), modeTitle.getText(), 2, "Target: 15 points", randomGrid, 15, dictionary);
             stage.show();
         }
     }
@@ -241,7 +244,7 @@ public class LevelSelectController {
             stage.setScene(new Scene(loader.load()));
             GameplayController cont = loader.getController();
             generateRandomGrid();
-            cont.updateData(usernameButton.getText(), modeTitle.getText(), 3, "Target: 20 points", randomGrid, 20);
+            cont.updateData(usernameButton.getText(), modeTitle.getText(), 3, "Target: 20 points", randomGrid, 20, dictionary);
             stage.show();
         }
     }
@@ -253,7 +256,7 @@ public class LevelSelectController {
             stage.setScene(new Scene(loader.load()));
             GameplayController cont = loader.getController();
             generateRandomGrid();
-            cont.updateData(usernameButton.getText(), modeTitle.getText(), 4, "Target: 25 points", randomGrid, 25);
+            cont.updateData(usernameButton.getText(), modeTitle.getText(), 4, "Target: 25 points", randomGrid, 25, dictionary);
             stage.show();
         }
     }
@@ -265,7 +268,7 @@ public class LevelSelectController {
             stage.setScene(new Scene(loader.load()));
             GameplayController cont = loader.getController();
             generateRandomGrid();
-            cont.updateData(usernameButton.getText(), modeTitle.getText(), 5, "Target: 30 points", randomGrid, 30);
+            cont.updateData(usernameButton.getText(), modeTitle.getText(), 5, "Target: 30 points", randomGrid, 30, dictionary);
             stage.show();
         }
     }
@@ -277,7 +280,7 @@ public class LevelSelectController {
             stage.setScene(new Scene(loader.load()));
             GameplayController cont = loader.getController();
             generateRandomGrid();
-            cont.updateData(usernameButton.getText(), modeTitle.getText(), 6, "Target: 35 points", randomGrid, 35);
+            cont.updateData(usernameButton.getText(), modeTitle.getText(), 6, "Target: 35 points", randomGrid, 35, dictionary);
             stage.show();
         }
     }
@@ -289,7 +292,7 @@ public class LevelSelectController {
             stage.setScene(new Scene(loader.load()));
             GameplayController cont = loader.getController();
             generateRandomGrid();
-            cont.updateData(usernameButton.getText(), modeTitle.getText(), 7, "Target: 40 points", randomGrid, 40);
+            cont.updateData(usernameButton.getText(), modeTitle.getText(), 7, "Target: 40 points", randomGrid, 40, dictionary);
             stage.show();
         }
     }
@@ -301,7 +304,7 @@ public class LevelSelectController {
             stage.setScene(new Scene(loader.load()));
             GameplayController cont = loader.getController();
             generateRandomGrid();
-            cont.updateData(usernameButton.getText(), modeTitle.getText(), 8, "Target: 50 points", randomGrid, 50);
+            cont.updateData(usernameButton.getText(), modeTitle.getText(), 8, "Target: 50 points", randomGrid, 50, dictionary);
             stage.show();
         }
     }
@@ -319,6 +322,9 @@ public class LevelSelectController {
                 }
             }
         }
+        randomGrid[0][0] = 'C';
+        randomGrid[0][1] = 'A';
+        randomGrid[0][2] = 'T';
     }
 
     private char generateRandomVowel(){

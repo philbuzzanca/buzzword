@@ -259,8 +259,8 @@ public class GameplayController {
             case "Animals":
                 if(this.level == Main.userData.getAnimals()) Main.userData.setAnimals(Main.userData.getAnimals()+1);
                 break;
-            case "Celebrities":
-                if(this.level == Main.userData.getCelebrities()) Main.userData.setCelebrities(Main.userData.getCelebrities()+1);
+            case "Common Names":
+                if(this.level == Main.userData.getCommonNames()) Main.userData.setCommonNames(Main.userData.getCommonNames()+1);
                 break;
             default:
                 break;
@@ -275,7 +275,7 @@ public class GameplayController {
             generator.writeStringField("Encrypted password", Main.userData.getEncryptedPassword());
             generator.writeNumberField("Dictionary words",Main.userData.getDictionaryWords());
             generator.writeNumberField("Animals",Main.userData.getAnimals());
-            generator.writeNumberField("Celebrities",Main.userData.getCelebrities());
+            generator.writeNumberField("Common Names",Main.userData.getCommonNames());
             generator.close();
         } catch (Exception e){
             e.printStackTrace();
@@ -323,8 +323,7 @@ public class GameplayController {
             wordTracker.add(word.toString());
             score += wordScore(word.toString().length());
             scoreLabel.setText("Score: " + score + " Points");
-            if (word.length()==3) guessedWords.getItems().add(word.toString()+"\t\t\t"+word.toString().length()*10);
-            else guessedWords.getItems().add(word.toString()+"\t\t"+word.toString().length()*10);
+            guessedWords.getItems().add(word.toString()+"\t"+wordScore(word.length()));
         }
 
     }
@@ -392,7 +391,8 @@ public class GameplayController {
         stage.show();
     }
 
-    public void updateData(String name, String title, int level, String target, char[][] randomGrid, int targetScore) {
+    public void updateData(String name, String title, int level, String target, char[][] randomGrid, int targetScore, Set<String> dictionary) {
+        this.dictionary = dictionary;
         this.targetScore = targetScore;
         this.level = level;
         usernameButton.setText(name);
@@ -435,7 +435,7 @@ public class GameplayController {
         label31.setVisible(false);
         label32.setVisible(false);
         label33.setVisible(false);
-        dictionary = BoggleSolver.loadHash();
+
         wordTracker = FXCollections.observableArrayList();
         button00.setAccessibleText(Character.toString(randomGrid[0][0]));
         button01.setAccessibleText(Character.toString(randomGrid[0][1]));
@@ -453,5 +453,7 @@ public class GameplayController {
         button31.setAccessibleText(Character.toString(randomGrid[3][1]));
         button32.setAccessibleText(Character.toString(randomGrid[3][2]));
         button33.setAccessibleText(Character.toString(randomGrid[3][3]));
+        System.out.println("Dictionary: "+this.dictionary.toString());
+
     }
 }
