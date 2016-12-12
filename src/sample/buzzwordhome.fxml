@@ -26,8 +26,9 @@
    <left>
       <VBox spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="cnpButton" mnemonicParsing="false" onAction="#cnpButtonClicked" text="Create New Profile" />
+            <Button fx:id="cnpButton" mnemonicParsing="false" onAction="#cnpButtonClicked" prefHeight="25.0" prefWidth="115.0" text="Create New Profile" />
             <Button fx:id="loginButton" mnemonicParsing="false" onAction="#loginButtonClicked" prefHeight="25.0" prefWidth="115.0" text="Login" />
+            <Button fx:id="helpButton" mnemonicParsing="false" onAction="#handleHelpButton" prefHeight="25.0" prefWidth="115.0" text="Help" />
             <MenuButton fx:id="selectModeMenu" disable="true" mnemonicParsing="false" prefHeight="25.0" prefWidth="115.0" text="Select Mode">
                <items>
                   <MenuItem fx:id="gm1" mnemonicParsing="false" onAction="#updateGameMode1" text="Dictionary Words" />
@@ -35,7 +36,7 @@
                   <MenuItem fx:id="gm3" mnemonicParsing="false" onAction="#updateGameMode3" text="Cities" />
                </items>
             </MenuButton>
-            <Button fx:id="startButton" disable="true" mnemonicParsing="false" onAction="#startButtonPressed" prefHeight="25.0" prefWidth="116.0" text="Start" />
+            <Button fx:id="startButton" disable="true" mnemonicParsing="false" onAction="#startButtonPressed" prefHeight="25.0" prefWidth="115.0" text="Start" />
          </children>
          <BorderPane.margin>
             <Insets />

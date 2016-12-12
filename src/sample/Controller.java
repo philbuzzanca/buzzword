@@ -31,6 +31,8 @@ public class Controller {
         private MenuItem gm2;
     @FXML
         private MenuItem gm3;
+    @FXML
+        private Button helpButton;
 
     public Button getCnpButton() {
         return cnpButton;
@@ -61,6 +63,11 @@ public class Controller {
     Set<String> namesDictionary = BoggleSolver.loadHash("words/firstNames.txt");
     Set<String> citiesDictionary = BoggleSolver.loadHash("words/cities.txt");
     Set<String> dictionary = boggleDictionary;
+
+    @FXML
+    public void handleHelpButton(){
+
+    }
 
 
     public void loginButtonClicked() throws IOException {

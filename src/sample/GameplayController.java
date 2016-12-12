@@ -14,13 +14,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.canvas.*;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TreeView;
-import javafx.scene.input.DragEvent;
-import javafx.scene.input.MouseDragEvent;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.input.*;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -129,6 +129,11 @@ public class GameplayController {
         private Button restartButton;
     @FXML
         private Button nextButton;
+    @FXML
+        private Canvas canvas;
+    @FXML
+        private BorderPane borderpane;
+
 
     private int score = 0;
 
@@ -139,12 +144,14 @@ public class GameplayController {
     private int targetScore;
     private int level;
     List<String> wordTracker;
-    List<Circle> buttonTracker;
+    List<Circle> buttonTracker = FXCollections.observableArrayList();
     private Set<String> allPossibleWords;
+    Circle[] circles;
 
 
     public void playPauseButtonPressed(){
         if (playPauseButton.getText().equals("PAUSE")) {
+
             timeline.pause();
             playPauseButton.setText("PLAY");
             setAllLettersVisible(false);
@@ -293,6 +300,70 @@ public class GameplayController {
                     ((Circle) event.getTarget()).setFill(Color.BLUE);
                     buttonTracker.add((Circle) event.getTarget());
                 }
+            }
+        }
+    }
+    private List<String> keyTracker = FXCollections.observableArrayList();
+    private List<Circle> keyCircleTracker = FXCollections.observableArrayList();
+
+    @FXML
+    private void handleKeyPressed(KeyEvent key){
+        int numOfLast = 0;
+        StringBuilder word = new StringBuilder();
+        if(playPauseButton.getText().equals("PAUSE")) {
+            switch(key.getCode()){
+                case ENTER:
+                    for(Circle c: circles) c.setFill(Paint.valueOf("#909090"));
+                    for(String s : keyTracker) word.append(s.toUpperCase());
+                    if (!wordTracker.contains(word.toString()) && dictionary.contains(word.toString())){
+                        wordTracker.add(word.toString());
+                        score += wordScore(word.toString().length());
+                        scoreLabel.setText("Score: " + score + " Points");
+                        if(word.length()>2) guessedWords.getItems().add(word.toString()+" - "+wordScore(word.length()));
+                    }
+                    keyTracker.clear();
+                    break;
+                default:
+                    numOfLast = 0;
+                    if(keyTracker.isEmpty()){
+                        for  (Circle c : circles){
+                            if (c.getAccessibleText().equals(key.getCode().toString())) {
+                                c.setFill(Color.BLUE);
+                                keyCircleTracker.add(c);
+                            }
+                        }
+                        keyTracker.add(key.getCode().toString());
+                    }
+                    else {
+                        for (Circle c : keyCircleTracker){
+                            boolean hasAnAdjacent = false;
+                            for(Circle d : circles){
+                                if(checkNodeAdjacency(c,d) && d.getAccessibleText().equals(key.getCode().toString())){
+                                    hasAnAdjacent = true;
+                                    d.setFill(Color.BLUE);
+                                   // keyCircleTracker.add(d);
+                                }
+                            }
+                            if(hasAnAdjacent==false) c.setFill(Paint.valueOf("#909090"));
+                        }
+                        for(Circle c : circles){
+                            if(c.getAccessibleText().equals(key.getCode().toString()) && c.getFill().equals(Color.BLUE)) {
+                                keyCircleTracker.add(c);
+                            }
+                            else {
+                                if (keyCircleTracker.contains(c)){
+                                    keyCircleTracker.remove(c);
+                                }
+                            }
+                        }
+                        keyTracker.add(key.getCode().toString());
+                        Iterator<Circle> iter = keyCircleTracker.iterator();
+                        while(iter.hasNext()){
+                            Circle c = iter.next();
+                            if(!c.getAccessibleText().equals(key.getCode().toString())) iter.remove();
+                        }
+                    }
+
             }
         }
     }
@@ -461,7 +532,10 @@ public class GameplayController {
         button31.setAccessibleText(Character.toString(randomGrid[3][1]));
         button32.setAccessibleText(Character.toString(randomGrid[3][2]));
         button33.setAccessibleText(Character.toString(randomGrid[3][3]));
-
+        circles = new Circle[]{    button00, button01, button02, button03,
+                button10, button11, button12, button13,
+                button20, button21, button22, button23,
+                button30, button31, button32, button33};
     }
 
     private void setAllLettersVisible(boolean b){
