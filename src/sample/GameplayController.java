@@ -155,22 +155,7 @@ public class GameplayController {
             timeline.pause();
             playPauseButton.setText("PLAY");
             setAllLettersVisible(false);
-            button00.setFill(Paint.valueOf("#909090"));
-            button01.setFill(Paint.valueOf("#909090"));
-            button02.setFill(Paint.valueOf("#909090"));
-            button03.setFill(Paint.valueOf("#909090"));
-            button10.setFill(Paint.valueOf("#909090"));
-            button11.setFill(Paint.valueOf("#909090"));
-            button12.setFill(Paint.valueOf("#909090"));
-            button13.setFill(Paint.valueOf("#909090"));
-            button20.setFill(Paint.valueOf("#909090"));
-            button21.setFill(Paint.valueOf("#909090"));
-            button22.setFill(Paint.valueOf("#909090"));
-            button23.setFill(Paint.valueOf("#909090"));
-            button30.setFill(Paint.valueOf("#909090"));
-            button31.setFill(Paint.valueOf("#909090"));
-            button32.setFill(Paint.valueOf("#909090"));
-            button33.setFill(Paint.valueOf("#909090"));
+            for (Circle c : circles) c.setFill(Paint.valueOf("#909090"));
             buttonTracker.clear();
         }
         else if (playPauseButton.getText().equals("START")) {
@@ -315,7 +300,7 @@ public class GameplayController {
                 case ENTER:
                     for(Circle c: circles) c.setFill(Paint.valueOf("#909090"));
                     for(String s : keyTracker) word.append(s.toUpperCase());
-                    if (!wordTracker.contains(word.toString()) && dictionary.contains(word.toString())){
+                    if (!wordTracker.contains(word.toString()) && allPossibleWords.contains(word.toString())){
                         wordTracker.add(word.toString());
                         score += wordScore(word.toString().length());
                         scoreLabel.setText("Score: " + score + " Points");
@@ -324,15 +309,26 @@ public class GameplayController {
                     keyTracker.clear();
                     break;
                 default:
-                    numOfLast = 0;
+                    boolean letterIsPresent = false;
+                    for(Circle c : circles){
+                        if (c.getAccessibleText().equals(key.getCode().toString())) letterIsPresent = true;
+                    }
+                    if(letterIsPresent==false){
+                        for(Circle c : circles){
+                            c.setFill(Paint.valueOf("#909090"));
+                        }
+                        keyTracker.clear();
+                    }
                     if(keyTracker.isEmpty()){
+                        boolean letter = false;
                         for  (Circle c : circles){
                             if (c.getAccessibleText().equals(key.getCode().toString())) {
                                 c.setFill(Color.BLUE);
                                 keyCircleTracker.add(c);
+                                letter=true;
                             }
                         }
-                        keyTracker.add(key.getCode().toString());
+                        if(letter) keyTracker.add(key.getCode().toString());
                     }
                     else {
                         for (Circle c : keyCircleTracker){
@@ -344,7 +340,10 @@ public class GameplayController {
                                    // keyCircleTracker.add(d);
                                 }
                             }
-                            if(hasAnAdjacent==false) c.setFill(Paint.valueOf("#909090"));
+
+                            if(hasAnAdjacent==false) {
+                                c.setFill(Paint.valueOf("#909090"));
+                            }
                         }
                         for(Circle c : circles){
                             if(c.getAccessibleText().equals(key.getCode().toString()) && c.getFill().equals(Color.BLUE)) {
@@ -363,7 +362,7 @@ public class GameplayController {
                             if(!c.getAccessibleText().equals(key.getCode().toString())) iter.remove();
                         }
                     }
-
+                    break;
             }
         }
     }
