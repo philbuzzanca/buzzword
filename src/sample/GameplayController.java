@@ -137,7 +137,7 @@ public class GameplayController {
 
     private int score = 0;
 
-    private static final Integer startTime = 180;
+    private static final Integer startTime = 60;
     private Set<String> dictionary;
     private Integer timeRemaining = startTime;
     private Timeline timeline;

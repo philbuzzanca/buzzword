@@ -39,7 +39,7 @@ class BoggleSolver {
         if(word.equals("")) return true;
         else if (row < 0 || row >= board.length || col < 0 || col >= board.length || board[row][col] != word.charAt(0)) return false;
         else {
-            char safe = board[row][col];
+            char save = board[row][col];
             board[row][col] = '*';
             String rest = word.substring(1, word.length());
             boolean result =    findWord(rest, row-1, col-1, board) ||
@@ -50,7 +50,7 @@ class BoggleSolver {
                                 findWord(rest, row+1, col-1, board) ||
                                 findWord(rest, row+1,   col, board) ||
                                 findWord(rest, row+1, col+1, board);
-            board[row][col] = safe;
+            board[row][col] = save;
             return result;
         }
     }
