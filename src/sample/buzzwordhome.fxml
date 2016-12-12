@@ -33,7 +33,7 @@
                <items>
                   <MenuItem fx:id="gm1" mnemonicParsing="false" onAction="#updateGameMode1" text="Dictionary Words" />
                   <MenuItem fx:id="gm2" mnemonicParsing="false" onAction="#updateGameMode2" text="Common Names" />
-                  <MenuItem fx:id="gm3" mnemonicParsing="false" onAction="#updateGameMode3" text="Cities" />
+                  <MenuItem fx:id="gm3" mnemonicParsing="false" onAction="#updateGameMode3" text="Three Letter Words" />
                </items>
             </MenuButton>
             <Button fx:id="startButton" disable="true" mnemonicParsing="false" onAction="#startButtonPressed" prefHeight="25.0" prefWidth="115.0" text="Start" />

@@ -237,8 +237,8 @@ public class GameplayController {
             case "Dictionary Words":
                 if(this.level == Main.userData.getDictionaryWords()) Main.userData.setDictionaryWords(Main.userData.getDictionaryWords()+1);
                 break;
-            case "Cities":
-                if(this.level == Main.userData.getCities()) Main.userData.setCities(Main.userData.getCities()+1);
+            case "Three Letter Words":
+                if(this.level == Main.userData.getThreeLetterWords()) Main.userData.setThreeLetterWords(Main.userData.getThreeLetterWords()+1);
                 break;
             case "Common Names":
                 if(this.level == Main.userData.getCommonNames()) Main.userData.setCommonNames(Main.userData.getCommonNames()+1);
@@ -255,7 +255,7 @@ public class GameplayController {
             generator.writeStringField("Username", Main.userData.getUsername());
             generator.writeStringField("Encrypted password", Main.userData.getEncryptedPassword());
             generator.writeNumberField("Dictionary words",Main.userData.getDictionaryWords());
-            generator.writeNumberField("Cities",Main.userData.getCities());
+            generator.writeNumberField("Three Letter Words",Main.userData.getThreeLetterWords());
             generator.writeNumberField("Common Names",Main.userData.getCommonNames());
             generator.close();
         } catch (Exception e){

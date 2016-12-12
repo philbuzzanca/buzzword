@@ -61,12 +61,13 @@ public class Controller {
     String gamemode = new String("Dictionary Words");
     Set<String> boggleDictionary = BoggleSolver.loadHash("words/boggleDictionary.txt");
     Set<String> namesDictionary = BoggleSolver.loadHash("words/firstNames.txt");
-    Set<String> citiesDictionary = BoggleSolver.loadHash("words/cities.txt");
+    Set<String> threeLetterDictionary = BoggleSolver.loadHash("words/threeLetterWords.txt");
     Set<String> dictionary = boggleDictionary;
 
     @FXML
     public void handleHelpButton(){
-
+        AppMessageDialogSingleton s = AppMessageDialogSingleton.getSingleton();
+        s.show("Help","Buzzword is a challenging vocabulary game.\nEarn points by finding words in the grid.\nTiles can only be selected once per word.\nHave fun!");
     }
 
 
@@ -131,7 +132,7 @@ public class Controller {
         this.dictionary = namesDictionary;
     }
     public void updateGameMode3(){
-        this.gamemode="Cities";
-        this.dictionary = citiesDictionary;
+        this.gamemode="Three Letter Words";
+        this.dictionary = threeLetterDictionary;
     }
 }

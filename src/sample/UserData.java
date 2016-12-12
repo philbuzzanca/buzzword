@@ -5,7 +5,16 @@ package sample;
  */
 public class UserData {
     private String username;
-    private int cities;
+
+    public int getThreeLetterWords() {
+        return threeLetterWords;
+    }
+
+    public void setThreeLetterWords(int threeLetterWords) {
+        this.threeLetterWords = threeLetterWords;
+    }
+
+    private int threeLetterWords;
     private int commonNames;
     private int dictionaryWords;
 
@@ -19,9 +28,6 @@ public class UserData {
         return username;
     }
 
-    public int getCities() {
-        return cities;
-    }
 
     public int getCommonNames() {
         return commonNames;
@@ -35,15 +41,15 @@ public class UserData {
 
     public UserData(String username){
         this.username = username;
-        cities = 1;
+        threeLetterWords = 1;
         commonNames = 1;
         dictionaryWords = 1;
     }
 
     public void setCities(int i){
-        if (i<=1) cities = 1;
-        else if (i>=8) cities = 8;
-        else cities = i;
+        if (i<=1) threeLetterWords = 1;
+        else if (i>=8) threeLetterWords = 8;
+        else threeLetterWords = i;
     }
 
     public void setCommonNames(int i){

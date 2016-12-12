@@ -129,7 +129,7 @@ public class CreateProfileWindow extends Stage {
                     generator.writeStringField("Username", username);
                     generator.writeStringField("Encrypted password", encrypt(passwordField.getText()));
                     generator.writeNumberField("Dictionary words",1);
-                    generator.writeNumberField("Cities",1);
+                    generator.writeNumberField("Three Letter Words",1);
                     generator.writeNumberField("Common Names",1);
                     generator.close();
                 } catch (Exception e){

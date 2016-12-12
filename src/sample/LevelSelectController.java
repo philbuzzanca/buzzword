@@ -70,10 +70,10 @@ public class LevelSelectController {
         usernameButton.setText(name);
         modeTitle.setText(title);
         System.out.println(title);
-        System.out.println(userData.getCities());
+        System.out.println(userData.getThreeLetterWords());
         switch (title) {
-            case "Cities":
-                for (int i = 1; i <= userData.getCities(); i++) {
+            case "Three Letter Words":
+                for (int i = 1; i <= userData.getThreeLetterWords(); i++) {
                     switch (i) {
                         case 1:
                             break;
@@ -191,8 +191,8 @@ public class LevelSelectController {
 
     private int getLevel(){
         switch (title) {
-            case "Cities":
-                return (userData.getCities());
+            case "Three Letter Words":
+                return (userData.getThreeLetterWords());
             case "Common Names":
                 return (userData.getCommonNames());
             default:
