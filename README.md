@@ -1,6 +1,8 @@
 # buzzword
 Improvements on CSE219 final project
 
+Note: to run this on your own computer, a "users" directory must be created within the buzzword directory (i.e. alongside the /src/ package)
+
 I used this repository to teach myself some new things in order to improve and cleanup an existing project.
 
 My first change was to organize my classes better. Previously, all of my Java classes and XML files were direct children of my 'src/sample' package.
