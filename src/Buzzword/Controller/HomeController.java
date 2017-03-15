@@ -29,44 +29,34 @@ public class HomeController {
 
     @FXML
             private Button loginButton;
-    @FXML
-        private MenuItem gm1;
-    @FXML
-        private MenuItem gm2;
-    @FXML
-        private MenuItem gm3;
-    @FXML
-        private Button helpButton;
 
-    public Button getCnpButton() {
+    Button getCnpButton() {
         return cnpButton;
     }
 
     @FXML
             private Button cnpButton;
-    @FXML
-            private Label modeTitle;
 
-    public Button getStartButton() {
+    Button getStartButton() {
         return startButton;
     }
 
     @FXML
             private Button startButton;
 
-    public MenuButton getSelectModeMenu() {
+    MenuButton getSelectModeMenu() {
         return selectModeMenu;
     }
 
     @FXML
             private MenuButton selectModeMenu;
 
-    static Main game = new Main();
-    String gamemode = new String("Dictionary Words");
-    Set<String> boggleDictionary = BoggleSolver.loadHash("words/boggleDictionary.txt");
-    Set<String> namesDictionary = BoggleSolver.loadHash("words/firstNames.txt");
-    Set<String> threeLetterDictionary = BoggleSolver.loadHash("words/threeLetterWords.txt");
-    Set<String> dictionary = boggleDictionary;
+    private static Main game = new Main();
+    private String gamemode = "Dictionary Words";
+    private Set<String> boggleDictionary = BoggleSolver.loadHash("words/boggleDictionary.txt");
+    private Set<String> namesDictionary = BoggleSolver.loadHash("words/firstNames.txt");
+    private Set<String> threeLetterDictionary = BoggleSolver.loadHash("words/threeLetterWords.txt");
+    private Set<String> dictionary = boggleDictionary;
 
     @FXML
     public void handleHelpButton(){
@@ -76,7 +66,7 @@ public class HomeController {
 
 
     public void loginButtonClicked() throws IOException {
-        if(loggedIn == false) {
+        if(!loggedIn) {
             LoginWindow.getLogin().getLoginField().clear();
             LoginWindow.getLogin().getPasswordField().clear();
             try {
@@ -121,8 +111,8 @@ public class HomeController {
     public void startButtonPressed() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("XML/buzzwordlevelselect.fxml"));
         Stage stage = (Stage) loginButton.getScene().getWindow();
-        stage.setScene(new Scene((Pane)loader.load()));
-        LevelSelectController cont = loader.<LevelSelectController>getController();
+        stage.setScene(new Scene(loader.load()));
+        LevelSelectController cont = loader.getController();
         cont.updateLevelData(game.getUserData().getUsername(),this.gamemode, this.dictionary);
         stage.show();
     }

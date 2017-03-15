@@ -1,5 +1,7 @@
 package Buzzword.Controller;
 
+import Buzzword.Model.BoggleGraph;
+import Buzzword.Model.BoggleVertex;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -61,6 +63,7 @@ public class LevelSelectController {
 
     private String title = "Dictionary Words";
     private char[][] randomGrid = new char[4][4];
+    private BoggleGraph randomGraph = new BoggleGraph();
     private Set<String> dictionary;
 
 
@@ -309,42 +312,37 @@ public class LevelSelectController {
         }
     }
 
+    private BoggleGraph generateGraphFromArray(char[][] grid){
+        BoggleGraph toReturn = new BoggleGraph();
+        BoggleVertex[][] vertices = new BoggleVertex[4][4];
+        for(int i = 0; i < 4; i++){
+            for(int j = 0; j < 4; j++){
+                BoggleVertex v = new BoggleVertex(grid[i][j]);
+                vertices[i][j]=v;
+                if((i-1)>=0 && (j-1)>=0){
+                    v.addNeighbor(vertices[i][j]);
+                }
+                if(i-1>=0){
+                    v.addNeighbor(vertices[i-1][j]);
+                }
+                if(j-1>=0){
+                    v.addNeighbor(vertices[i][j-1]);
+                }
+                toReturn.addVertex(v);
+            }
+        }
+        return toReturn;
+    }
+
     private void generateRandomGrid(){
         for(int i = 0; i < 4; i++){
             for (int j = 0; j < 4; j++){
                 randomGrid[i][j] = (char)((int)'A'+Math.random()*((int)'Z'-(int)'A'+1));
-                /*
-                if ((!(randomGrid[i][j] == 'A' || randomGrid[i][j] == 'E' || randomGrid[i][j] == 'I' || randomGrid[i][j] == 'O' || randomGrid[i][j] == 'U')) && reroll(33)==true){
-                    randomGrid[i][j] = generateRandomVowel(); // 33% chance to reroll non-vowels to guaranteed vowels
-
-                }
-                if ((randomGrid[i][j] == 'Z' || randomGrid[i][j] == 'Q' || randomGrid[i][j] == 'X' || randomGrid[i][j] == 'J' || randomGrid[i][j] == 'K' || randomGrid[i][j] == 'V') && reroll(200)==true){
-                    randomGrid[i][j] = (char)((int)'A'+Math.random()*((int)'Z'-(int)'A'+1)); // 75% chance to reroll on uncommon characters
-                }
-                */
             }
         }
-        if(BoggleSolver.getMaxScore(BoggleSolver.solve(randomGrid, this.dictionary)) < 30){
+        randomGraph = generateGraphFromArray(randomGrid);
+        if(BoggleSolver.getMaxScore(BoggleSolver.solveGraph(randomGraph, this.dictionary)) < 30){
             generateRandomGrid();
-        }
-    }
-
-    private char generateRandomVowel(){
-        Random r = new Random();
-        int randomInt = r.nextInt(5)+1;
-        switch(randomInt){
-            case 1:
-                return 'A';
-            case 2:
-                return 'E';
-            case 3:
-                return 'I';
-            case 4:
-                return 'O';
-            case 5:
-                return 'U';
-            default:
-                return 'E';
         }
     }
 
@@ -356,26 +354,5 @@ public class LevelSelectController {
         else return true;
     }
 
-
-    /*
-    private char[] generateFourLetterWord(){
-
-        String word="word";
-        URL wordsResource = getClass().getClassLoader().getResource("common words.txt");
-        assert wordsResource != null;
-        int toSkip = new Random().nextInt(995);
-        try (Stream<String> lines = Files.lines(Paths.get(wordsResource.toURI()))){
-            //noinspection OptionalGetWithoutIsPresent
-            word = lines.skip(toSkip).findFirst().get();
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-        if (word.length()==4)
-                return word.toUpperCase().toCharArray();
-        else {
-           return generateFourLetterWord();
-        }
-    }
-    */
 
 }

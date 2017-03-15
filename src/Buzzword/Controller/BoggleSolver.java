@@ -1,6 +1,10 @@
 package Buzzword.Controller;
 
+import Buzzword.Model.BoggleGraph;
+import Buzzword.Model.BoggleVertex;
+
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
@@ -65,6 +69,43 @@ public class BoggleSolver {
         }
         return toReturn;
     }
+
+    static Set<String> solveGraph(BoggleGraph board, Set<String> dictionary){
+        Set<String> toReturn = new HashSet<>();
+        for(String word : dictionary){
+            if (findWordGraph(word, board)){
+                System.out.println(word);
+                toReturn.add(word);
+            }
+        }
+        return toReturn;
+    }
+
+    private static boolean findWordGraph(String word, ArrayList<BoggleVertex> vertices){
+        if(word.equals("")) return true;
+        else {
+            for(BoggleVertex neighbor : vertices){
+                if (neighbor.getLetter() == word.charAt(0)){
+                    char save = neighbor.getLetter();
+                    boolean result = findWordGraph(word.substring(1), neighbor.getAdjacentVertices());
+                    neighbor.setLetter(save);
+                    return result;
+                }
+            }
+        }
+        return false;
+    }
+
+    private static boolean findWordGraph(String word, BoggleGraph board){
+        for(BoggleVertex v : board.getVertices()){
+            if(v.getLetter()==word.charAt(0)){
+                 return findWordGraph(word.substring(1), v.getAdjacentVertices());
+            }
+        }
+        return false;
+    }
+
+
 
     static int getMaxScore(Set<String> wordList){
         int maxScore = 0;
