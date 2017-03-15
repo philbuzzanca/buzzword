@@ -1,5 +1,10 @@
-package sample;
+package Buzzword.Controller;
 
+import Buzzword.Model.UserData;
+import Buzzword.View.AppMessageDialogSingleton;
+import Buzzword.View.CreateProfileWindow;
+import Buzzword.View.LoginWindow;
+import Buzzword.View.YesNoCancelDialogSingleton;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,7 +16,7 @@ import java.io.IOException;
  * Created by Philip Buzzanca on 11/14/2016.
  */
 public class Main extends Application {
-    static UserData userData = new UserData("");
+    public static UserData userData = new UserData("");
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -24,7 +29,7 @@ public class Main extends Application {
         YesNoCancelDialogSingleton yesNoCancelDialogSingleton = YesNoCancelDialogSingleton.getSingleton();
         yesNoCancelDialogSingleton.init(primaryStage);
 
-        Parent root = FXMLLoader.load(getClass().getResource("buzzwordhome.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("XML/buzzwordhome.fxml"));
         primaryStage.setTitle("Buzzword");
         primaryStage.setScene(new Scene(root, 800, 690));
         primaryStage.show();

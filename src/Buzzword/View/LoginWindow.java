@@ -1,5 +1,6 @@
-package sample;
+package Buzzword.View;
 
+import Buzzword.Controller.Main;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonParser;

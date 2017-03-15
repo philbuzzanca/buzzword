@@ -1,4 +1,4 @@
-package sample;
+package Buzzword.View;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
