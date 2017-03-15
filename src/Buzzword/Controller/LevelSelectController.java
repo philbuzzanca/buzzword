@@ -1,4 +1,4 @@
-package Buzzword;
+package Buzzword.Controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.Random;
 import java.util.Set;
 
-import static Buzzword.Main.userData;
+import static Buzzword.Controller.Main.userData;
 
 /**
  * Created by Philip Buzzanca on 11/14/2016.
@@ -206,7 +206,7 @@ public class LevelSelectController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("buzzwordhome.fxml"));
         Stage stage = (Stage) usernameButton.getScene().getWindow();
         stage.setScene(new Scene(loader.load()));
-        Controller cont = loader.getController();
+        HomeController cont = loader.getController();
         cont.getLoginButton().setText(Main.userData.getUsername());
         cont.getCnpButton().setVisible(false);
         cont.getSelectModeMenu().setDisable(false);
@@ -215,7 +215,7 @@ public class LevelSelectController {
     }
 
     public void circleOnePressed() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("buzzwordgameplay.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("XML/buzzwordgameplay.fxml"));
         Stage stage = (Stage) circleOne.getScene().getWindow();
         stage.setScene(new Scene(loader.load()));
         GameplayController cont = loader.getController();
@@ -227,7 +227,7 @@ public class LevelSelectController {
     public void circleTwoPressed() throws IOException {
         System.out.println(getLevel());
         if(getLevel()>=2) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("buzzwordgameplay.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("XML/buzzwordgameplay.fxml"));
             Stage stage = (Stage) circleTwo.getScene().getWindow();
             stage.setScene(new Scene(loader.load()));
             GameplayController cont = loader.getController();
@@ -239,7 +239,7 @@ public class LevelSelectController {
 
     public void circleThreePressed() throws IOException {
         if(getLevel()>=3) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("buzzwordgameplay.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("XML/buzzwordgameplay.fxml"));
             Stage stage = (Stage) circleThree.getScene().getWindow();
             stage.setScene(new Scene(loader.load()));
             GameplayController cont = loader.getController();
@@ -251,7 +251,7 @@ public class LevelSelectController {
 
     public void circleFourPressed() throws IOException {
         if(getLevel()>=4) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("buzzwordgameplay.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("XML/buzzwordgameplay.fxml"));
             Stage stage = (Stage) circleFour.getScene().getWindow();
             stage.setScene(new Scene(loader.load()));
             GameplayController cont = loader.getController();
@@ -263,7 +263,7 @@ public class LevelSelectController {
 
     public void circleFivePressed() throws IOException {
         if(getLevel()>=5) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("buzzwordgameplay.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("XML/buzzwordgameplay.fxml"));
             Stage stage = (Stage) circleFive.getScene().getWindow();
             stage.setScene(new Scene(loader.load()));
             GameplayController cont = loader.getController();
@@ -275,7 +275,7 @@ public class LevelSelectController {
 
     public void circleSixPressed() throws IOException {
         if(getLevel()>=6) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("buzzwordgameplay.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("XML/buzzwordgameplay.fxml"));
             Stage stage = (Stage) circleSix.getScene().getWindow();
             stage.setScene(new Scene(loader.load()));
             GameplayController cont = loader.getController();
@@ -287,7 +287,7 @@ public class LevelSelectController {
 
     public void circleSevenPressed() throws IOException {
         if(getLevel()>=7) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("buzzwordgameplay.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("XML/buzzwordgameplay.fxml"));
             Stage stage = (Stage) circleSeven.getScene().getWindow();
             stage.setScene(new Scene(loader.load()));
             GameplayController cont = loader.getController();
@@ -299,7 +299,7 @@ public class LevelSelectController {
 
     public void circleEightPressed() throws IOException {
         if(getLevel()>=8) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("buzzwordgameplay.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("XML/buzzwordgameplay.fxml"));
             Stage stage = (Stage) circleEight.getScene().getWindow();
             stage.setScene(new Scene(loader.load()));
             GameplayController cont = loader.getController();

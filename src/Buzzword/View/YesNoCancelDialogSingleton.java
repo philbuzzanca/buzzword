@@ -1,4 +1,4 @@
-package Buzzword;
+package Buzzword.View;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

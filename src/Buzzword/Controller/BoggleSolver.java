@@ -1,4 +1,4 @@
-package Buzzword;
+package Buzzword.Controller;
 
 import java.io.File;
 import java.util.HashSet;
@@ -8,7 +8,7 @@ import java.util.Set;
 /**
  * Created by Phil on 12/8/2016.
  */
-class BoggleSolver {
+public class BoggleSolver {
 
     static Set<String> loadHash(String filename){
         Set<String> dictionary = new HashSet<>();

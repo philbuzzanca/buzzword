@@ -1,5 +1,9 @@
-package Buzzword;
+package Buzzword.Controller;
 
+import Buzzword.View.AppMessageDialogSingleton;
+import Buzzword.View.CreateProfileWindow;
+import Buzzword.View.LoginWindow;
+import Buzzword.View.YesNoCancelDialogSingleton;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -17,7 +21,7 @@ import java.util.Set;
  * Created by Philip Buzzanca on 11/14/2016.
  */
 
-public class Controller {
+public class HomeController {
     public Button getLoginButton() {
         return loginButton;
     }
@@ -115,7 +119,7 @@ public class Controller {
     }
 
     public void startButtonPressed() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("buzzwordlevelselect.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("XML/buzzwordlevelselect.fxml"));
         Stage stage = (Stage) loginButton.getScene().getWindow();
         stage.setScene(new Scene((Pane)loader.load()));
         LevelSelectController cont = loader.<LevelSelectController>getController();
