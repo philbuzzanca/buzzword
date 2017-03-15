@@ -15436,7 +15436,7 @@ samarium
 samba
 same
 samovar
-sample
+Buzzword
 sanatoria
 sanatorium
 sanctify

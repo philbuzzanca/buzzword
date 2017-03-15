@@ -1,4 +1,4 @@
-package sample;
+package Buzzword;
 
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParseException;

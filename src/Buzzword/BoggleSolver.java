@@ -1,4 +1,4 @@
-package sample;
+package Buzzword;
 
 import java.io.File;
 import java.util.HashSet;

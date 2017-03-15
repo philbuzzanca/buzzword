@@ -1,4 +1,4 @@
-package sample;
+package Buzzword;
 
 /**
  * Created by Phil on 11/26/2016.

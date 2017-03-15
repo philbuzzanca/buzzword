@@ -1,4 +1,4 @@
-package sample;
+package Buzzword;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.Random;
 import java.util.Set;
 
-import static sample.Main.userData;
+import static Buzzword.Main.userData;
 
 /**
  * Created by Philip Buzzanca on 11/14/2016.
