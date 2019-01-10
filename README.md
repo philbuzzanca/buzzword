@@ -22,13 +22,4 @@ an ArrayList.
 In my "BoggleSolver" class which containst several methods for finding words in the board and loading dictionaries, I implemented the
 solveGraph method. This method takes my BoggleGraph class as a parameter as well as the currently used dictionary, and returns a Set of
 Strings containing all legal words on the board. I implemented this by going down the list of words in the dictionary, and recursively 
-searching each vertex to see if it has a neighboring node containing the next letter of the string.
-
-Attempting to reimplement the project using a graph instead of an array taught me a lot about my own coding habits. I realized that my
-code was not as easy to update as I expectd it to be. Too many of my methods were dependent on eachother to easily update one without having
-to rework another. What I should have done, and intend to do in future projects, is limit this dependency by having my methods talk to a 
-central controller class rather than communicate directly with eachother.
-
-In addition to learning better coding practices, this was my first experience working with git branches. Because I wanted to leave my original
-working project intact, I worked on my organization and graph updates in branches rather than in the master branch. Once I was sure my new
-features were functional and didn't break my project, I pulled them in to the master branch.
+searching each vertex to see if it has a neighboring node containing the next letter of the string
